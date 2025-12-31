@@ -1,0 +1,105 @@
+/*-- scss:defaults --*/
+
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600&display=swap');
+
+// fonts
+$font-family-monospace: 'Fira Code', monospace;
+$font-family: 'League Spartan', sans-serif;
+$code-block-font-size: 0.6em;
+
+// colors
+$teal: #047C90;
+$dark-blue: #003660;
+$body-bg: #fffaf3;
+$body-color: #273b50;
+$link-color: #7E98A8;
+$code-block-bg: $body-bg;
+$code-block-border-color: $body-bg;
+$tabset-border-color: $body-color;
+
+/*-- scss:rules --*/
+
+.reveal .title {
+  font-family: 'League Spartan', sans-serif;
+  color: #a47823;
+  font-size: 1.8em;
+  font-weight: 200;
+  position: absolute;
+  bottom: 375px;
+  left: 250px;
+  text-align: right;
+}
+
+.reveal .subtitle {
+  font-family: 'League Spartan', sans-serif;
+  color: #273b50;
+  font-size: 1.2em;
+  font-weight: 200;
+  position: absolute;
+  bottom: 180px;
+  right: 10px;
+  text-align: right;
+}
+
+.reveal .footer {
+  font-family: 'League Spartan', sans-serif;
+  color: #000000;
+  font-size: .8em !important;
+  font-weight: 200;
+  position: absolute;
+  bottom: 50px !important;
+  text-align: center;
+}
+
+// teal horizontal line
+hr {
+  border: 4px solid $teal;
+}
+
+// body text
+.body-text {
+	font-size: .8em;
+	line-height: 1.3em;
+	margin-bottom: 1em;
+}
+
+/* center text (horizontally) */
+.center-text{
+  text-align: center;
+}
+
+// smaller header text
+.small-header {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+// even smaller list text
+.small-list {
+  font-size: 0.8em;
+}
+
+// teal text
+.teal-text {
+  color: $teal;
+}
+
+.important-text-bg {
+  background-color: rgba(217, 178, 189, 0.5); 
+  padding-top: 5px; 
+  padding-bottom: 5px; 
+  padding-right: 5px; 
+  padding-left: 8px; 
+  border-radius: 25px;
+}
+
+.blue-underline { 
+  text-decoration: underline $dark-blue;
+  text-underline-offset: 10px; // https://developer.mozilla.org/en-US/docs/Web/CSS/text-underline-offset
+  text-decoration-thickness: 4px;
+}
+
+
+

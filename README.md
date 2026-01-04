@@ -333,7 +333,7 @@ Kutztown University of Pennsylvania
 ## Conference Presentation
 
 **HICSS 2026 - Game Changing Analytics in Sport**  
-📍 Hilton Hawaiian Village, Honolulu, Hawaii  
+📍 Hyatt Regency - Maui, HI  
 📅 January 6-10, 2026
 
 

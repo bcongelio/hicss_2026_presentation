@@ -2,8 +2,8 @@
 
 A Network-Based Framework for Location Strategy Analysis
 
-**Presented at:** HICSS 2026 - Game Changing Analytics in Sport Mini-Track
-**Author:** Bradley Congelio, Ph.D. | Kutztown University of Pennsylvania  
+**Presented at:** HICSS 2026 - Game Changing Analytics in Sport Mini-Track<br>
+**Author:** Bradley Congelio, Ph.D. | Kutztown University of Pennsylvania<br>  
 **Contact:** congelio@kutztown.edu
 
 ---

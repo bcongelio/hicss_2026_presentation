@@ -22,7 +22,7 @@ library(fontawesome)
 
 [Spatial-Competitive Analytics in Professional Bass Fishing: A Network-Based Framework]{.title}
 
-[Bradley Congelio <br> {{< fa building-columns >}} Kutztown University of Pennsylvania]{.subtitle}
+[Bradley Congelio, Ph.D. <br> {{< fa building-columns >}} Kutztown University of Pennsylvania]{.subtitle}
 
 [Source code available on GitHub {{< fa brands github title="GitHub Octocat logo" >}}]{.footer}
 

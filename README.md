@@ -321,7 +321,7 @@ Data from Bassmaster.com is used for academic research purposes under their publ
 ## Contact
 
 **Bradley Congelio, Ph.D.**  
-Assistant Professor of Sport Management
+Assistant Professor of Sport Management<br>
 Kutztown University of Pennsylvania
 
 📧 congelio@kutztown.edu  

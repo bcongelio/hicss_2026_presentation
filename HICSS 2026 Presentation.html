@@ -301,7 +301,7 @@
 <p>Ray Scott founded B.A.S.S. and hosted the first modern bass tournament in 1967 on Beaver Lake in Arkansas. That’s 57 years ago. And we’re STILL using the same performance metric we used in 1967 - total daily weight of your five heaviest fish.</p>
 <p>Think about that. MLB didn’t stop at batting average. The NFL didn’t stop at total yards. But bass fishing has been stuck with the same primitive metric for six decades.</p>
 <p>The problem isn’t that total weight is wrong - it’s that it’s INCOMPLETE. It tells us nothing about HOW that performance was achieved. Was it skill? Was it luck? Did the angler make strategic decisions or just stumble into productive water?</p>
-<p>That’s the gap we’re addressing. How do we innovate a sport that’s been analytically stagnant since 1967?</p>
+<p>That’s the gap I’m addressing. How do we innovate a sport that’s been analytically stagnant since 1967?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -366,10 +366,10 @@
 <aside class="notes">
 <p>This slide shows the core intellectual challenge of the paper. The NFL has player tracking data - GPS coordinates, speed, acceleration, field position, defensive alignment. That’s the MIDDLEWARE that enables their “Over Expected” metrics.</p>
 <p>Bass fishing doesn’t have equivalent tracking infrastructure. We can’t put GPS trackers on fish. We can’t monitor water conditions in real-time across the entire lake. We don’t have the data abundance the NFL enjoys.</p>
-<p>So we had to BUILD the middleware ourselves. That’s what PWC, CAM, and ILIM are - they’re the spatial-competitive metrics that provide context for performance evaluation.</p>
+<p>So I had to BUILD the middleware myself. That’s what PWC, CAM, and ILIM are - they’re the spatial-competitive metrics that provide context for performance evaluation.</p>
 <p>PWC gives us location quality plus strategic positioning. CAM proves elite performers extract different value from the same locations - that’s the skill component. ILIM synthesizes everything into comprehensive location importance.</p>
 <p>These metrics serve as the foundation - the necessary first step toward building “Weight Over Expected” for bass fishing. We can’t jump straight to WOE without first establishing the spatial-competitive context. This paper builds that foundation.</p>
-<p>The key message here is: this isn’t just metrics for metrics’ sake. Everything we’re doing is building toward a larger goal - context-aware performance evaluation that separates skill from luck in professional bass fishing.</p>
+<p>The key message here is: this isn’t just metrics for metrics’ sake. Everything I’m doing is building toward a larger goal - context-aware performance evaluation that separates skill from luck in professional bass fishing.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -418,7 +418,7 @@
 <p>Let me walk you through the dataset. Toledo Bend Reservoir, February 22-25, 2024. Four consecutive tournament days. 102 professional anglers. 1,587 individual GPS-tagged fish catches.</p>
 <p>This is the first time we’ve had this level of spatial granularity in bass fishing. Every single catch has a GPS coordinate, a timestamp, an individual fish weight, and we know which angler caught it.</p>
 <p>The spatial discretization framework is critical. We can’t compare infinite GPS points directly - we need to transform continuous space into discrete, comparable units. That’s what the 20×20 grid does. It gives us 400 cells that we can aggregate data into and compare.</p>
-<p>The mathematical assignment is straightforward - if a catch’s coordinates fall within a cell’s boundaries, we assign it to that cell. This lets us calculate location-level metrics: how many fish were caught here, what was the average weight, how many anglers fished this spot.</p>
+<p>The mathematical assignment is straightforward - if a catch’s coordinates fall within a cell’s boundaries, I assign it to that cell. This lets me calculate location-level metrics: how many fish were caught here, what was the average weight, how many anglers fished this spot.</p>
 <p>The grid size of 20×20 was chosen to balance resolution with statistical power. Finer grids would give more detail but create cells with too little data. Coarser grids would obscure important spatial patterns. 400 cells gives us the granularity we need while maintaining enough catches per cell for meaningful analysis.</p>
 <p>This discretization framework is the foundation for everything else - it transforms raw GPS coordinates into analyzable location units.</p>
 <style type="text/css">
@@ -471,8 +471,8 @@
 <aside class="notes">
 <p>Quick technical note on data collection - this is important for reproducibility. Bassmaster doesn’t provide this data in bulk downloads. We had to build custom R functions to interface with their web API.</p>
 <p>The fetch_catch_data function hits their JSON endpoint and retrieves individual fish catch records with all the spatial and temporal information. The fetch_leaderboard_data function gets tournament standings and angler rankings.</p>
-<p>We incorporated a two-second delay between API calls to be respectful of their servers - this is just ethical data collection practice. The entire collection process for one tournament takes about 15-20 minutes.</p>
-<p>The beauty of this approach is that it’s REPEATABLE. We can run the same code for any Bassmaster Elite Series tournament. That’s critical for the next phase of this research - expanding to full-season analysis.</p>
+<p>I incorporated a two-second delay between API calls to be respectful of their servers - this is just ethical data collection practice. The entire collection process for one tournament takes about 2 minutes.</p>
+<p>The beauty of this approach is that it’s REPEATABLE. I can run the same code for any Bassmaster Elite Series tournament. That’s critical for the next phase of this research - expanding to full-season analysis.</p>
 <p>The code is available on GitHub if anyone wants to replicate this or apply it to other tournaments. Transparency and reproducibility are foundational to good research.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -498,7 +498,7 @@
 <p>Notice how the catches aren’t uniformly distributed - there’s clear concentration in certain areas. This visual representation makes it obvious that location matters. Some parts of the lake saw intense fishing pressure, others were largely ignored.</p>
 <p>The legend shows tournament days, and if you hover over points you can see individual catch details - which angler, what time, fish weight, whether it was a keeper.</p>
 <p>This map is more than just pretty visualization - it’s the first step in understanding spatial strategy. Where did anglers choose to fish? How did those choices change across tournament days? Did successful anglers fish different areas than unsuccessful ones?</p>
-<p>The spatial framework we’re building will let us answer these questions quantitatively. But sometimes you need the visualization first to see what you’re trying to measure.</p>
+<p>The spatial framework we’re building will let me answer these questions quantitatively. But sometimes you need the visualization first to see what you’re trying to measure.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -552,9 +552,9 @@
 </div>
 </div></div>
 <aside class="notes">
-<p>This is the first step in our three-step spatial framework. We’re creating a uniform 20×20 grid that partitions the tournament area into 400 discrete cells.</p>
-<p>The function is mathematically straightforward - we create sequences from minimum to maximum latitude and longitude, divided into 20 equal intervals. Then we use expand.grid to generate all possible combinations, giving us 400 cells.</p>
-<p>Each cell gets a unique ID - like “10_15” - and we store its exact coordinate boundaries. This is critical because in the next step, we need to evaluate whether a catch falls within a specific cell’s boundaries.</p>
+<p>This is the first step in a three-step spatial framework. I am creating a uniform 20×20 grid that partitions the tournament area into 400 discrete cells.</p>
+<p>The function is mathematically straightforward - I create sequences from minimum to maximum latitude and longitude, divided into 20 equal intervals. Then I use expand.grid to generate all possible combinations, giving us 400 cells.</p>
+<p>Each cell gets a unique ID - like “10_15” - and I store its exact coordinate boundaries. This is critical because in the next step, I need to evaluate whether a catch falls within a specific cell’s boundaries.</p>
 <p>The uniformity is important. We’re not trying to match ecological zones or fishing structure - we’re creating a neutral spatial framework that treats all parts of the lake equally. This prevents us from imposing our assumptions about where fish “should” be.</p>
 <p>Think of it like creating a coordinate system. We’re imposing structure on continuous space so we can aggregate and compare. Every analytic framework needs this kind of spatial discretization - traffic analysis uses road segments, climate research uses grid cells, epidemiology uses geographic zones.</p>
 <p>We’re doing the same thing for competitive fishing.</p>
@@ -947,6 +947,71 @@
           display:block!important;
       }</style></aside>
 </section>
+<section id="performance-index-pi-validation-predictive-power" class="slide level2">
+<h2>Performance Index (PI): Validation &amp; Predictive Power</h2>
+<hr>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/ilim_correlation.png" style="width:100.0%"></p>
+<div class="center-text body-text-s">
+<p><em>Strong positive correlation between ILIM and Performance Index</em></p>
+</div>
+</div><div class="column body-text-m" style="width:50%;">
+<p><strong>What PI Measures:</strong></p>
+<p>Composite performance assessment integrating spatial-competitive metrics</p>
+<div class="small-list">
+<p><strong>Formula:</strong></p>
+<p><span class="math display">\[PI_i = 0.2 \cdot PWC_{norm} + 0.4 \cdot CAM_{norm} + 0.3 \cdot ILIM_{norm}\]</span> <strong>Differential Weighting:</strong><br> - CAM (0.4): Highest - separates elite from field<br> - ILIM (0.3): Strategic positioning importance<br> - PWC (0.2): Baseline location productivity</p>
+</div>
+<div class="fragment small-list">
+<p><strong>Predictive Validation:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Result</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exact Match</td>
+<td>55/104</td>
+<td>53%</td>
+</tr>
+<tr class="even">
+<td>Within One Tier</td>
+<td>88/104</td>
+<td>86%</td>
+</tr>
+</tbody>
+</table>
+<div class="body-text-s">
+<p>8 of top 10 finishers ranked in top PI quartile</p>
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>The Performance Index is our ultimate composite metric - it synthesizes PWC, CAM, and ILIM into a single performance score for each angler.</p>
+<p>The weighting structure is theoretically motivated. CAM gets the highest weight at 0.4 because it’s the best discriminator between elite and non-elite performers. If you can identify and exploit locations with competitive advantages, that’s the primary skill component we’re trying to measure.</p>
+<p>ILIM gets 0.3 because strategic positioning matters - being at network hubs provides sustained competitive advantages. PWC gets 0.2 because while baseline productivity is necessary, it’s not sufficient for elite performance.</p>
+<p>The correlation plot shows strong positive relationship between ILIM and Performance Index - as expected, since ILIM is a component of PI. But notice the spread - you can have moderate ILIM and still achieve high PI if you excel at CAM. That’s the value of the weighted composite.</p>
+<p>Now here’s the validation that proves this framework works: we can predict tournament outcomes. Exact match accuracy of 53% - that means for 55 out of 104 anglers, our Performance Index correctly predicted their exact finishing tier. That’s remarkable for a model with no information about fish behavior, weather, or underwater structure.</p>
+<p>Within one tier accuracy of 86% is even more impressive. We got 88 out of 104 anglers either exactly right or within one performance tier. That’s not luck - that’s a valid analytical framework.</p>
+<p>And the clincher: 8 of the top 10 finishers ranked in the top Performance Index quartile. Our metrics successfully identified elite performers before we knew the tournament results.</p>
+<p>This validation proves the thesis of the paper: spatial-competitive metrics CAN quantify skill in professional bass fishing. Elite performance isn’t random - it’s strategic, it’s measurable, and we can predict it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="the-path-forward-completing-weight-over-expected" class="slide level2">
 <h2>The Path Forward: Completing Weight Over Expected</h2>
 <hr>
@@ -961,7 +1026,7 @@
 <div class="small-list fragment">
 <p><strong>The Weight Over Expected Vision:</strong></p>
 <p><span class="math display">\[WOE_i = W_{actual,i} - E[W_i | Context]\]</span></p>
-<p><strong>Current Context Variables:</strong><br> - Location quality (PWC): ✓<br> - Competitive positioning (CAM): ✓<br> - Strategic hubs (ILIM): ✓</p>
+<p><strong>Current Context Variables:</strong><br> - Location quality (PWC): ✓<br> - Competitive positioning (CAM): ✓<br> - Strategic hubs (ILIM): ✓<br> - Performance Index (PI): ✓</p>
 </div>
 </div><div class="column body-text-m" style="width:45%;">
 <div class="fragment">
@@ -1009,7 +1074,7 @@
 </div>
 <p><br><br></p>
 <div style="font-size:1.2em; color:#d2e3f3;">
-<p>Bradley Congelio</p>
+<p>Bradley Congelio, Ph.D.</p>
 <p><i class="fa-solid fa-envelope" aria-label="envelope"></i> congelio@kutztown.edu</p>
 <p><i class="fa-brands fa-github" aria-label="github"></i> github.com/bcongelio</p>
 <p><i class="fa-solid fa-building-columns" aria-label="building-columns"></i> Kutztown University of Pennsylvania</p>

@@ -948,10 +948,7 @@ The exciting part? We've proven it's possible. Bass fishing CAN be analyzed with
 That's what this paper contributes - not just metrics, but a comprehensive analytical framework for spatial-competitive analysis in professional bass fishing. The path to Weight Over Expected is clear. We just need to keep walking it.
 :::
 
-##  {#thank-you data-menu-title="Thank You" background="#053660"}
-
-:::::: center-text
-<br><br>
+##  {#thank-you data-menu-title="Thank You" background="#053660" .nostretch}
 
 ::: {style="font-size:3em; color:#d2e3f3; font-family:'Sanchez', serif;"}
 Thank You
@@ -960,12 +957,10 @@ Thank You
 <br>
 
 ::: {style="font-size:1.5em; color:#d2e3f3;"}
-**Questions?**
+**Questions?**<br><br>
 :::
 
-<br><br>
-
-::: {style="font-size:1.2em; color:#d2e3f3;"}
+::: {style="font-size:0.9em; color:#d2e3f3;"}
 Bradley Congelio, Ph.D.
 
 {{< fa envelope >}} congelio\@kutztown.edu
@@ -973,8 +968,13 @@ Bradley Congelio, Ph.D.
 {{< fa brands github >}} github.com/bcongelio
 
 {{< fa building-columns >}} Kutztown University of Pennsylvania
+
+
+
+![](images/big_bass_award.jpg){.absolute top=50 right=100}
+
+
 :::
-::::::
 
 ::: notes
 That completes the presentation. To summarize: we've built the first spatial-competitive analytics framework for professional bass fishing. We've demonstrated that elite performance is skill-based spatial strategy, not luck. We've created three novel metrics - PWC, CAM, and ILIM - that quantify location value, competitive advantage, and integrated strategic importance.

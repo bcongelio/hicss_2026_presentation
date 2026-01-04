@@ -178,14 +178,14 @@ $$PI_i = 0.2 \cdot PWC_{norm} + 0.4 \cdot CAM_{norm} + 0.3 \cdot ILIM_{norm}$$
 ```r
 # Required R packages
 install.packages(c(
-  "tidyverse",      # Data manipulation
-  "sf",             # Spatial analysis
-  "igraph",         # Network analysis
-  "ggraph",         # Network visualization
-  "httr2",          # API requests
-  "jsonlite",       # JSON parsing
-  "leaflet",        # Interactive maps
-  "viridis"         # Color palettes
+  "tidyverse",      ### data manipulation
+  "sf",             ### spatial analysis
+  "igraph",         ### network analysis
+  "ggraph",         ### network visualization
+  "httr2",          ### API requests
+  "jsonlite",       ### JSON parsing
+  "leaflet",        ### interactive maps
+  "viridis"         ### Color palettes
 ))
 ```
 
@@ -314,7 +314,7 @@ Proceedings of the 59th Hawaii International Conference on System Sciences (HICS
 
 This project is licensed under the MIT License - see LICENSE file for details.
 
-Data from Bassmaster.com is used for academic research purposes under their publicly available API. Please respect their terms of service when using this data.
+Data from Bassmaster.com is used for academic research purposes under their "publicly" available API. Please respect their terms of service when using this data.
 
 ---
 

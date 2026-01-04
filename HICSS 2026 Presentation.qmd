@@ -208,10 +208,6 @@ Bass fishing doesn't have equivalent tracking infrastructure. We can't put GPS t
 So I had to BUILD the middleware myself. That's what PWC, CAM, and ILIM are - they're the spatial-competitive metrics that provide context for performance evaluation.
 
 PWC gives us location quality plus strategic positioning. CAM proves elite performers extract different value from the same locations - that's the skill component. ILIM synthesizes everything into comprehensive location importance.
-
-These metrics serve as the foundation - the necessary first step toward building "Weight Over Expected" for bass fishing. We can't jump straight to WOE without first establishing the spatial-competitive context. This paper builds that foundation.
-
-The key message here is: this isn't just metrics for metrics' sake. Everything I'm doing is building toward a larger goal - context-aware performance evaluation that separates skill from luck in professional bass fishing.
 :::
 
 ## Study Design: Toledo Bend 2024
@@ -264,8 +260,6 @@ The spatial discretization framework is critical. We can't compare infinite GPS 
 The mathematical assignment is straightforward - if a catch's coordinates fall within a cell's boundaries, I assign it to that cell. This lets me calculate location-level metrics: how many fish were caught here, what was the average weight, how many anglers fished this spot.
 
 The grid size of 20×20 was chosen to balance resolution with statistical power. Finer grids would give more detail but create cells with too little data. Coarser grids would obscure important spatial patterns. 400 cells gives us the granularity we need while maintaining enough catches per cell for meaningful analysis.
-
-This discretization framework is the foundation for everything else - it transforms raw GPS coordinates into analyzable location units.
 :::
 
 ## Scraping the Data
@@ -314,10 +308,6 @@ Quick technical note on data collection - this is important for reproducibility.
 
 The fetch_catch_data function hits their JSON endpoint and retrieves individual fish catch records with all the spatial and temporal information. The fetch_leaderboard_data function gets tournament standings and angler rankings.
 
-I incorporated a two-second delay between API calls to be respectful of their servers - this is just ethical data collection practice. The entire collection process for one tournament takes about 2 minutes.
-
-The beauty of this approach is that it's REPEATABLE. I can run the same code for any Bassmaster Elite Series tournament. That's critical for the next phase of this research - expanding to full-season analysis.
-
 The code is available on GitHub if anyone wants to replicate this or apply it to other tournaments. Transparency and reproducibility are foundational to good research.
 :::
 
@@ -336,11 +326,9 @@ This interactive map visualizes the spatial distribution of all 1,587 catches ac
 
 Notice how the catches aren't uniformly distributed - there's clear concentration in certain areas. This visual representation makes it obvious that location matters. Some parts of the lake saw intense fishing pressure, others were largely ignored.
 
-The legend shows tournament days, and if you hover over points you can see individual catch details - which angler, what time, fish weight, whether it was a keeper.
+Where did anglers choose to fish? How did those choices change across tournament days? Did successful anglers fish different areas than unsuccessful ones?
 
-This map is more than just pretty visualization - it's the first step in understanding spatial strategy. Where did anglers choose to fish? How did those choices change across tournament days? Did successful anglers fish different areas than unsuccessful ones?
-
-The spatial framework we're building will let me answer these questions quantitatively. But sometimes you need the visualization first to see what you're trying to measure.
+The spatial framework we're building will let me answer these questions quantitatively.
 :::
 
 ## Spatial Design: Create Uniform Grid
@@ -474,8 +462,6 @@ The logic is simple: for each catch, we extract the latitude and longitude, then
 
 We use a sapply function to vectorize this - it evaluates each catch against the grid structure and returns the appropriate cell ID. If no cell matches, we return NA - these would be catches outside our tournament area, which we filter out in validation.
 
-This is computationally intensive - we're doing 1,587 coordinate evaluations against 400 cells. But it's a one-time operation per tournament, and it's the critical step that transforms point data into location data.
-
 Once this step is complete, every catch has a grid_cell identifier. That means we can now GROUP BY grid_cell and start calculating location-level metrics.
 
 This is where we transition from "1,587 individual GPS points" to "400 locations with aggregated catch data." That's what enables all the subsequent analysis.
@@ -537,17 +523,13 @@ location_productivity <- tournament_data |>
 :::::::::
 
 ::: notes
-Now we get to the payoff of the discretization framework. With catches assigned to grid cells, we can calculate meaningful location-level metrics.
+With catches assigned to grid cells, we can calculate meaningful location-level metrics.
 
 Total catches per cell tells us fishing pressure - how many times did anglers fish this location. Keeper fish counts show quality - not all catches are tournament-relevant. Total weight of keepers is the bottom line - this is what determines tournament success.
 
 Unique anglers per location is fascinating - it reveals whether a spot was "discovered" by multiple anglers independently or exploited by just one or two competitors. Average weight per keeper shows fish quality at each location. Keeper ratio - the proportion of caught fish that anglers kept as part of their five largest - reveals both fish size and angler decision-making under pressure.
 
-These six metrics give us a comprehensive picture of location productivity. But notice what we're NOT doing yet - we're not incorporating network structure, we're not comparing elite versus non-elite performance, we're just calculating baseline productivity.
-
-That's intentional. We need the foundation first. These location productivity metrics become the building blocks for PWC, CAM, and ILIM.
-
-The key message here: we've successfully transformed 1,587 raw GPS points into 400 discrete locations with comparable, quantifiable productivity metrics. THAT's what enables spatial-competitive analysis.
+These six metrics give us a comprehensive picture of location productivity.
 :::
 
 ## Spatial Network Structure
@@ -621,11 +603,13 @@ High-betweenness locations offer:
 ::: notes
 This slide transitions from "what the network shows us" to "why it matters competitively."
 
-High-betweenness locations offer three concrete advantages. First, access flexibility - you can efficiently reach multiple fishing zones without burning time running across the lake. Second, tactical adaptability - as weather changes, water temperature shifts, or fishing pressure builds, you can adjust your strategy without abandoning your position. Third, competitive efficiency - you achieve success through strategic positioning rather than relying solely on finding the highest absolute productivity.
+High-betweenness locations offer three concrete advantages. First, access flexibility - you can efficiently reach multiple fishing zones without burning time running across the lake.
 
-This is the intellectual bridge between network analysis and our metrics. PWC incorporates betweenness centrality BECAUSE high-betweenness locations provide these competitive advantages.
+Second, tactical adaptability - as weather changes, water temperature shifts, or fishing pressure builds, you can adjust your strategy without abandoning your position.
 
-The key insight - and this is what separates this framework from traditional fishing analysis - is that elite performance isn't just about finding fish. It's about positioning yourself in the competitive landscape to maximize sustained success across changing conditions.
+Third, competitive efficiency - you achieve success through strategic positioning rather than relying solely on finding the highest absolute productivity.
+
+The key insight is that elite performance isn't just about finding fish. It's about positioning yourself in the competitive landscape to maximize sustained success across changing conditions.
 
 That's what the network analysis reveals. And that's what PWC, CAM, and ILIM are designed to quantify.
 :::
@@ -820,17 +804,13 @@ Luke Palmer: ILIM = 1.28 (6th place) - Comprehensive strategic execution
 ::: notes
 ILIM is our "big picture" metric. While PWC and CAM each tell us something specific, ILIM synthesizes everything into a single score that captures overall location importance.
 
-We normalize each component metric first - this is crucial. Without normalization, a metric with large raw values would dominate. By scaling everything to 0-1, each dimension contributes equally to the final score.
-
-Then we simply average them. Equal weighting here reflects our theoretical position that all three dimensions - productivity, competitive advantage, and strategic positioning - matter for location value.
+We normalize each component metric first. Without normalization, a metric with large raw values would dominate. By scaling everything to 0-1, each dimension contributes equally to the final score.
 
 Two cells exceeded 0.60 on ILIM, representing locations with comprehensive competitive advantages.
 
 Pat Schlapper's 1.39 is the highest we observed. What this tells us is that he achieved optimal balance - he wasn't just good at one thing, he excelled across productivity, competitive advantage, AND strategic positioning.
 
 Luke Palmer at 1.28 demonstrates something important: you don't need to lead every category to succeed. His 6th place finish came from balanced performance across multiple dimensions. This is exactly what ILIM is designed to capture - comprehensive strategic execution.
-
-The validation comes from our convergent analysis: locations in the top ILIM quartile had PWC 35 times higher and CAM 2,689 times higher than bottom quartile. ILIM successfully integrates our component metrics to identify strategically superior locations.
 :::
 
 ## Performance Index (PI): Validation & Predictive Power
@@ -948,7 +928,7 @@ The exciting part? We've proven it's possible. Bass fishing CAN be analyzed with
 That's what this paper contributes - not just metrics, but a comprehensive analytical framework for spatial-competitive analysis in professional bass fishing. The path to Weight Over Expected is clear. We just need to keep walking it.
 :::
 
-##  {#thank-you data-menu-title="Thank You" background="#053660" .nostretch}
+##  {#thank-you .nostretch data-menu-title="Thank You" background="#053660"}
 
 ::: {style="font-size:3em; color:#d2e3f3; font-family:'Sanchez', serif;"}
 Thank You
@@ -969,19 +949,9 @@ Bradley Congelio, Ph.D.
 
 {{< fa building-columns >}} Kutztown University of Pennsylvania
 
-
-
-![](images/big_bass_award.jpg){.absolute top=50 right=100}
-
-
+![](images/big_bass_award.jpg){.absolute top="50" right="100"}
 :::
 
 ::: notes
-That completes the presentation. To summarize: we've built the first spatial-competitive analytics framework for professional bass fishing. We've demonstrated that elite performance is skill-based spatial strategy, not luck. We've created three novel metrics - PWC, CAM, and ILIM - that quantify location value, competitive advantage, and integrated strategic importance.
-
-Most importantly, we've established the foundation for Weight Over Expected. We're not there yet - we still need underwater structure data and technology proficiency measures. But we've proven it's possible. Bass fishing CAN be analyzed with the same rigor as traditional sports.
-
-This framework is reproducible, extensible, and grounded in solid methodology. The code is available, the data collection process is documented, and the metrics are mathematically rigorous.
-
 I'm happy to take questions about the methodology, the metrics, the findings, or future directions for this research. Thank you.
 :::
